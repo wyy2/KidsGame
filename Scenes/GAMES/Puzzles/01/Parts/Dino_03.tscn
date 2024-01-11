@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=3 uid="uid://bxbbjy5hvinxn"]
+
+[ext_resource type="Shader" uid="uid://coyl6brhrovsx" path="res://Shaders/outline5.tres" id="1_rs67u"]
+[ext_resource type="Texture2D" uid="uid://c8j6qrinj5uo0" path="res://Assets/Puzzles/dino3.png" id="2_5xdnq"]
+[ext_resource type="Script" path="res://Scripts/centerSprite.gd" id="3_g4pvu"]
+[ext_resource type="Shader" uid="uid://c2g8cm1jyv4to" path="res://Shaders/outline2.tres" id="4_pyl33"]
+[ext_resource type="Script" path="res://Scripts/draggable_poly.gd" id="5_1lmly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nel5"]
+shader = ExtResource("1_rs67u")
+shader_parameter/fill_color = Color(0.333333, 0.623529, 1, 0.470588)
+shader_parameter/line_color = Color(0.188235, 0.470588, 0.623529, 1)
+shader_parameter/line_thickness = 3.99
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct36x"]
+shader = ExtResource("4_pyl33")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf62t"]
+shader = ExtResource("4_pyl33")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk5c8"]
+shader = ExtResource("4_pyl33")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnuue"]
+shader = ExtResource("4_pyl33")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubg5i"]
+shader = ExtResource("4_pyl33")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[node name="Puzzle" type="Node2D"]
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(392, 219)
+
+[node name="Contour" type="Sprite2D" parent="Container"]
+material = SubResource("ShaderMaterial_1nel5")
+position = Vector2(419, 261)
+texture = ExtResource("2_5xdnq")
+script = ExtResource("3_g4pvu")
+
+[node name="P1" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_ct36x")
+position = Vector2(799, 440)
+texture = ExtResource("2_5xdnq")
+polygon = PackedVector2Array(323, 29, 257, -9, 21, 93, 77, 200, 225, 172, 273, 160, 339, 123)
+script = ExtResource("5_1lmly")
+snap_dist = 50
+x = 799
+y = 440
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P1/Area2D"]
+polygon = PackedVector2Array(90, 202, 360, 130, 318, 4, 45, 72)
+
+[node name="P2" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_tf62t")
+position = Vector2(-442, -309)
+texture = ExtResource("2_5xdnq")
+polygon = PackedVector2Array(330, 147, 322, 204, 307, 272, 239, 374, 183, 259, 225, 172, 273, 160, 312.99, 137.581)
+script = ExtResource("5_1lmly")
+snap_dist = 50
+x = -442
+y = -309
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P2/Area2D"]
+polygon = PackedVector2Array(188, 179, 360, 130, 328, 208, 254, 359)
+
+[node name="P3" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_rk5c8")
+position = Vector2(561, -245)
+texture = ExtResource("2_5xdnq")
+polygon = PackedVector2Array(330, 147, 322, 204, 307, 272, 239, 374, 226, 478, 450, 505, 460, 465, 468, 444, 476, 394, 477, 307, 463, 238, 446, 195, 448, 184, 465, 118)
+script = ExtResource("5_1lmly")
+snap_dist = 50
+x = 561
+y = -245
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P3/Area2D"]
+polygon = PackedVector2Array(442, 495, 482, 306, 438, 138, 352, 138, 328, 208, 254, 359, 219, 487)
+
+[node name="P4" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_vnuue")
+position = Vector2(-645, 84)
+texture = ExtResource("2_5xdnq")
+polygon = PackedVector2Array(666, 204, 588, 320, 593, 366, 581, 409, 558, 474, 565, 492, 549, 506, 450, 505, 460, 465, 468, 444, 476, 394, 477, 307, 463, 238, 446, 195, 448, 184, 465, 118)
+script = ExtResource("5_1lmly")
+snap_dist = 50
+x = -645
+y = 84
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P4/Area2D"]
+polygon = PackedVector2Array(442, 495, 501, 310, 452, 133, 622, 254, 592, 365, 561, 467, 556, 521)
+
+[node name="P5" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_ubg5i")
+position = Vector2(-168, -442)
+texture = ExtResource("2_5xdnq")
+polygon = PackedVector2Array(672, 412, 614.03, 281.289, 588, 320, 593, 366, 581, 409, 558, 474, 565, 492, 549, 506, 833, 540, 825, 448)
+script = ExtResource("5_1lmly")
+snap_dist = 50
+x = -168
+y = -442
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P5/Area2D"]
+polygon = PackedVector2Array(719, 512, 832, 476, 642, 368, 622, 254, 592, 365, 561, 467, 556, 521)
+
+[connection signal="input_event" from="Container/P1/Area2D" to="Container/P1" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P2/Area2D" to="Container/P2" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P3/Area2D" to="Container/P3" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P4/Area2D" to="Container/P4" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P5/Area2D" to="Container/P5" method="_on_area_2d_input_event"]

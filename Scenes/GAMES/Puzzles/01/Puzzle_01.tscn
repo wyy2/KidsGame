@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://py1jb2uyvyj3"]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle_Game_Manager.gd" id="1_4rt8v"]
+[ext_resource type="PackedScene" uid="uid://wabkn4agk0d8" path="res://Scenes/GAMES/Puzzles/01/Parts/Dino_01.tscn" id="2_h2fpu"]
+[ext_resource type="PackedScene" uid="uid://b2y1jroippvmc" path="res://Scenes/GAMES/Puzzles/01/Parts/Dino_02.tscn" id="3_fdqhb"]
+[ext_resource type="PackedScene" uid="uid://bxbbjy5hvinxn" path="res://Scenes/GAMES/Puzzles/01/Parts/Dino_03.tscn" id="4_adgev"]
+[ext_resource type="Texture2D" uid="uid://cvc4x4nroihta" path="res://Assets/Backgrounds/bg_jungle_3.png" id="5_rmmqn"]
+
+[sub_resource type="Curve" id="Curve_n7rpu"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 33.1288), 0.0, 0.0, 0, 0, Vector2(0.994937, 50.7976), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5jasb"]
+offsets = PackedFloat32Array(0.002849, 0.997151, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.655601, 0.655601, 0.655601, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_uqpa1"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="MAIN" type="Node2D" node_paths=PackedStringArray("gameContainer")]
+script = ExtResource("1_4rt8v")
+scenes = Array[PackedScene]([ExtResource("2_h2fpu"), ExtResource("3_fdqhb"), ExtResource("4_adgev")])
+gameContainer = NodePath("GAME")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(824, 469)
+scale = Vector2(1.1538, 1.1538)
+texture = ExtResource("5_rmmqn")
+
+[node name="Win_Particles" type="CPUParticles2D" parent="."]
+position = Vector2(817, 471)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.3
+explosiveness = 1.0
+randomness = 0.27
+lifetime_randomness = 0.33
+emission_shape = 3
+emission_rect_extents = Vector2(500, 200)
+direction = Vector2(0, -1)
+initial_velocity_min = 100.0
+initial_velocity_max = 800.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+angle_min = -20.0
+angle_max = 20.0
+angle_curve = SubResource("Curve_n7rpu")
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+color = Color(0.431373, 0.752941, 1, 1)
+color_ramp = SubResource("Gradient_5jasb")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_uqpa1")
+
+[node name="GAME" type="Node2D" parent="."]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://elndw7vpn14g"]
+
+[ext_resource type="LabelSettings" uid="uid://d1gbo2rrxdsla" path="res://Styles/Label_01.tres" id="1_su22y"]
+
+[node name="Dino" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 1640.0
+offset_bottom = 940.0
+color = Color(0.968627, 0.87451, 0.976471, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 718.0
+offset_top = 105.0
+offset_right = 1172.0
+offset_bottom = 154.0
+text = "Select Game"
+label_settings = ExtResource("1_su22y")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 98.0
+offset_top = 380.0
+offset_right = 379.0
+offset_bottom = 655.0
+color = Color(0.705882, 0.811765, 0.176471, 1)
+
+[node name="Label2" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 221.0
+offset_right = 243.0
+offset_bottom = 275.0
+text = "Puzzle"
+label_settings = ExtResource("1_su22y")
+text_direction = 3
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 437.0
+offset_top = 380.0
+offset_right = 718.0
+offset_bottom = 655.0
+color = Color(0.176471, 0.631373, 0.811765, 1)
+
+[node name="Label2" type="Label" parent="ColorRect3"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 221.0
+offset_right = 243.0
+offset_bottom = 275.0
+text = "Build
+"
+label_settings = ExtResource("1_su22y")
+text_direction = 3
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 1120.0
+offset_top = 380.0
+offset_right = 1401.0
+offset_bottom = 655.0
+color = Color(0.811765, 0.376471, 0.176471, 1)
+
+[node name="Label2" type="Label" parent="ColorRect5"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 221.0
+offset_right = 243.0
+offset_bottom = 275.0
+text = "Count"
+label_settings = ExtResource("1_su22y")
+text_direction = 3
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 779.0
+offset_top = 380.0
+offset_right = 1060.0
+offset_bottom = 655.0
+color = Color(0.811765, 0.176471, 0.462745, 1)
+
+[node name="Label2" type="Label" parent="ColorRect4"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 221.0
+offset_right = 243.0
+offset_bottom = 275.0
+text = "Race"
+label_settings = ExtResource("1_su22y")
+text_direction = 3

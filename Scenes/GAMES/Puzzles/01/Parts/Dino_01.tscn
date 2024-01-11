@@ -1,0 +1,177 @@
+[gd_scene load_steps=12 format=3 uid="uid://wabkn4agk0d8"]
+
+[ext_resource type="Shader" uid="uid://coyl6brhrovsx" path="res://Shaders/outline5.tres" id="2_1ywyw"]
+[ext_resource type="Shader" uid="uid://c2g8cm1jyv4to" path="res://Shaders/outline2.tres" id="2_tlr56"]
+[ext_resource type="Script" path="res://Scripts/centerSprite.gd" id="3_1yc67"]
+[ext_resource type="Texture2D" uid="uid://clnln8emkt8ay" path="res://Assets/Puzzles/dino1.png" id="3_gfey1"]
+[ext_resource type="Script" path="res://Scripts/draggable_poly.gd" id="4_1tnpt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nel5"]
+shader = ExtResource("2_1ywyw")
+shader_parameter/fill_color = Color(0.333333, 0.623529, 1, 0.470588)
+shader_parameter/line_color = Color(0.188235, 0.470588, 0.623529, 1)
+shader_parameter/line_thickness = 3.99
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4pqh"]
+shader = ExtResource("2_tlr56")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fkpa"]
+shader = ExtResource("2_tlr56")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Shader" id="Shader_rmtkq"]
+code = "/* 
+Rainbow outline by @Farfalk and @ThePadDev, And Edit for @LURGX in 2022
+
+Apply to canvas items with transparent backgrounds.
+Check that there is sufficient transparent background space for the outline!
+
+CC0 License (but citation is welcome <3)
+All code is property of @Farfalk and @ThePadDev
+Thanks for shader and I'm a newbie with shaders 
+*/
+
+shader_type canvas_item;
+
+uniform bool rainbow  = false; //Activate the rainbow or select you color
+uniform vec4 line_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);//color line
+uniform float line_scale : hint_range(0, 20) = 1.2;    // thickness of the line
+uniform float frequency : hint_range(0.0, 2.0) = 0.5;  // frequency of the rainbow
+uniform float light_offset : hint_range(0.00001, 1.0) = 0.5;   // this offsets all color channels;
+uniform float alpha : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_scale;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 animated_line_color = vec4(light_offset + sin(2.0*3.14*frequency*TIME),
+							   light_offset + sin(2.0*3.14*frequency*TIME + radians(120.0)),
+							   light_offset + sin(2.0*3.14*frequency*TIME + radians(240.0)),
+							   alpha);
+	
+	vec4 color = texture(TEXTURE, UV);
+	if (rainbow == true){//if rainbow is activated
+		COLOR = mix(color, animated_line_color, outline - color.a);
+	}
+	if (rainbow == false){//if rainbow not is activated and you pick a color
+		COLOR = mix(color, line_color , outline - color.a);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg8e3"]
+shader = SubResource("Shader_rmtkq")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxca7"]
+shader = ExtResource("2_tlr56")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 0)
+shader_parameter/line_scale = 5.0
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
+
+[node name="Puzzle" type="Node2D"]
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(392, 219)
+
+[node name="Contour" type="Sprite2D" parent="Container"]
+material = SubResource("ShaderMaterial_1nel5")
+position = Vector2(419, 261)
+texture = ExtResource("3_gfey1")
+script = ExtResource("3_1yc67")
+
+[node name="P1" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_h4pqh")
+position = Vector2(307, -119)
+texture = ExtResource("3_gfey1")
+polygon = PackedVector2Array(480, 132, 733, -72, 880, 212, 675, 222)
+script = ExtResource("4_1tnpt")
+snap_dist = 50
+x = 307
+y = -119
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P1/Area2D"]
+polygon = PackedVector2Array(508, 137, 733, 257, 888, 125, 639, -47)
+
+[node name="P2" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_0fkpa")
+position = Vector2(-678, -280)
+texture = ExtResource("3_gfey1")
+polygon = PackedVector2Array(480, 132, 488, 210, 468, 513, 719, 510, 675, 222)
+script = ExtResource("4_1tnpt")
+snap_dist = 50
+x = -678
+y = -280
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P2/Area2D"]
+polygon = PackedVector2Array(508, 137, 733, 257, 678, 510, 471, 498, 488, 185)
+
+[node name="P3" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_bg8e3")
+position = Vector2(500, 153)
+texture = ExtResource("3_gfey1")
+polygon = PackedVector2Array(480, 132, 488, 210, 468, 513, 240, 494, 317, 410, 298, 364, 288, 291, 263, 194)
+script = ExtResource("4_1tnpt")
+snap_dist = 50
+x = 500
+y = 153
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P3/Area2D"]
+polygon = PackedVector2Array(398, 172, 283, 219, 306, 499, 471, 498, 488, 185)
+
+[node name="P4" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
+material = SubResource("ShaderMaterial_bxca7")
+position = Vector2(-246, 144)
+texture = ExtResource("3_gfey1")
+polygon = PackedVector2Array(82, 297, 5, 327, 63, 402, 236, 430, 317, 410, 298, 364, 288, 291, 235, 263)
+script = ExtResource("4_1tnpt")
+snap_dist = 50
+x = -246
+y = 144
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="Container/P4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Container/P4/Area2D"]
+polygon = PackedVector2Array(167, 308, 285.407, 248.309, 299.618, 421.309, 155, 415, -3, 339, -10, 312)
+
+[connection signal="input_event" from="Container/P1/Area2D" to="Container/P1" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P2/Area2D" to="Container/P2" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P3/Area2D" to="Container/P3" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Container/P4/Area2D" to="Container/P4" method="_on_area_2d_input_event"]
