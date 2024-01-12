@@ -42,6 +42,7 @@ color = Color(0.956863, 0.8, 0.894118, 1)
 position = Vector2(1258, 660)
 script = ExtResource("1_2e2lb")
 vertices = PackedVector2Array(0, 0, 315, 0, 315, 81, 0, 81)
+color = null
 
 [node name="trapezoidal_triangle_with_polygon2" type="Sprite2D" parent="Control"]
 position = Vector2(308, 583)

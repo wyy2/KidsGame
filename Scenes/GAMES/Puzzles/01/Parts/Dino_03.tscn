@@ -12,7 +12,7 @@ shader_parameter/fill_color = Color(0.333333, 0.623529, 1, 0.470588)
 shader_parameter/line_color = Color(0.188235, 0.470588, 0.623529, 1)
 shader_parameter/line_thickness = 3.99
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct36x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oduy"]
 shader = ExtResource("4_pyl33")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(1, 1, 1, 0)
@@ -21,7 +21,7 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf62t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp1xs"]
 shader = ExtResource("4_pyl33")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(1, 1, 1, 0)
@@ -30,7 +30,7 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk5c8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0er5"]
 shader = ExtResource("4_pyl33")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(1, 1, 1, 0)
@@ -39,7 +39,7 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnuue"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2abe"]
 shader = ExtResource("4_pyl33")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(1, 1, 1, 0)
@@ -48,7 +48,7 @@ shader_parameter/frequency = 0.5
 shader_parameter/light_offset = 0.5
 shader_parameter/alpha = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubg5i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n17qp"]
 shader = ExtResource("4_pyl33")
 shader_parameter/rainbow = false
 shader_parameter/line_color = Color(1, 1, 1, 0)
@@ -69,7 +69,7 @@ texture = ExtResource("2_5xdnq")
 script = ExtResource("3_g4pvu")
 
 [node name="P1" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
-material = SubResource("ShaderMaterial_ct36x")
+material = SubResource("ShaderMaterial_3oduy")
 position = Vector2(799, 440)
 texture = ExtResource("2_5xdnq")
 polygon = PackedVector2Array(323, 29, 257, -9, 21, 93, 77, 200, 225, 172, 273, 160, 339, 123)
@@ -85,7 +85,7 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(90, 202, 360, 130, 318, 4, 45, 72)
 
 [node name="P2" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
-material = SubResource("ShaderMaterial_tf62t")
+material = SubResource("ShaderMaterial_yp1xs")
 position = Vector2(-442, -309)
 texture = ExtResource("2_5xdnq")
 polygon = PackedVector2Array(330, 147, 322, 204, 307, 272, 239, 374, 183, 259, 225, 172, 273, 160, 312.99, 137.581)
@@ -101,7 +101,7 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(188, 179, 360, 130, 328, 208, 254, 359)
 
 [node name="P3" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
-material = SubResource("ShaderMaterial_rk5c8")
+material = SubResource("ShaderMaterial_c0er5")
 position = Vector2(561, -245)
 texture = ExtResource("2_5xdnq")
 polygon = PackedVector2Array(330, 147, 322, 204, 307, 272, 239, 374, 226, 478, 450, 505, 460, 465, 468, 444, 476, 394, 477, 307, 463, 238, 446, 195, 448, 184, 465, 118)
@@ -117,7 +117,7 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(442, 495, 482, 306, 438, 138, 352, 138, 328, 208, 254, 359, 219, 487)
 
 [node name="P4" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
-material = SubResource("ShaderMaterial_vnuue")
+material = SubResource("ShaderMaterial_r2abe")
 position = Vector2(-645, 84)
 texture = ExtResource("2_5xdnq")
 polygon = PackedVector2Array(666, 204, 588, 320, 593, 366, 581, 409, 558, 474, 565, 492, 549, 506, 450, 505, 460, 465, 468, 444, 476, 394, 477, 307, 463, 238, 446, 195, 448, 184, 465, 118)
@@ -133,7 +133,7 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(442, 495, 501, 310, 452, 133, 622, 254, 592, 365, 561, 467, 556, 521)
 
 [node name="P5" type="Polygon2D" parent="Container" groups=["puzzle_part"]]
-material = SubResource("ShaderMaterial_ubg5i")
+material = SubResource("ShaderMaterial_n17qp")
 position = Vector2(-168, -442)
 texture = ExtResource("2_5xdnq")
 polygon = PackedVector2Array(672, 412, 614.03, 281.289, 588, 320, 593, 366, 581, 409, 558, 474, 565, 492, 549, 506, 833, 540, 825, 448)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/GAMES/Build/01/Draw.gd" id="1_2e2lb"]
 [ext_resource type="Texture2D" uid="uid://cvc4x4nroihta" path="res://Assets/Backgrounds/bg_jungle_3.png" id="1_t4uv8"]
 
-[node name="BUILD" type="VBoxContainer"]
+[node name="BUILD" type="Node2D"]
 
 [node name="BG" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -11,46 +11,49 @@ position = Vector2(824, 469)
 scale = Vector2(1.1538, 1.1538)
 texture = ExtResource("1_t4uv8")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 2
-
-[node name="trapezoidal_triangle_with_rectangle" type="Sprite2D" parent="Control"]
-position = Vector2(1200, 314)
-script = ExtResource("1_2e2lb")
-vertices = PackedVector2Array(0, 29, 156, 0, 316, 29, 316, 81, 0, 81)
-color = Color(0.976471, 0.811765, 0.713726, 1)
-
-[node name="Trapezoid" type="Sprite2D" parent="Control"]
+[node name="Trapezoid" type="Node2D" parent="."]
 position = Vector2(809, 448)
 script = ExtResource("1_2e2lb")
 vertices = PackedVector2Array(0, 0, 159, 30, 316, 0, 316, 81, 0, 81)
 color = Color(0.176471, 0.647059, 0.494118, 1)
 
-[node name="TrapezoidPentagon" type="Sprite2D" parent="Control"]
+[node name="TrapezoidPentagon" type="Node2D" parent="."]
 position = Vector2(766, 619)
 script = ExtResource("1_2e2lb")
 vertices = PackedVector2Array(0, 0, 159, 32, 316, 0, 316, 50, 159, 82, 0, 50)
 color = Color(0.501961, 0.929412, 0.964706, 1)
 
-[node name="TrapezoidTriangular" type="Sprite2D" parent="Control"]
+[node name="TrapezoidTriangular" type="Node2D" parent="."]
+visible = false
 position = Vector2(356, 319)
 script = ExtResource("1_2e2lb")
 vertices = PackedVector2Array(0, 0, 156, 28, 316, 0, 316, 77, 156, 48, 0, 77, 0, 0)
 color = Color(0.956863, 0.8, 0.894118, 1)
 
-[node name="rectangle" type="Sprite2D" parent="Control"]
-position = Vector2(1258, 660)
+[node name="trapezoidal_triangle_with_rectangle" type="Node2D" parent="."]
+visible = false
+position = Vector2(1200, 314)
 script = ExtResource("1_2e2lb")
-vertices = PackedVector2Array(0, 0, 315, 0, 315, 81, 0, 81)
+vertices = PackedVector2Array(0, 29, 156, 0, 316, 29, 316, 81, 0, 81)
+color = Color(0.976471, 0.811765, 0.713726, 1)
 
-[node name="trapezoidal_triangle_with_polygon2" type="Sprite2D" parent="Control"]
+[node name="trapezoidal_triangle_with_polygon" type="Node2D" parent="."]
+visible = false
+position = Vector2(875, 201)
+script = ExtResource("1_2e2lb")
+vertices = PackedVector2Array(0, 30, 158, 0, 316, 30, 316, 51, 158, 82, 0, 51)
+color = Color(0.803922, 0.858824, 0.909804, 1)
+
+[node name="trapezoidal_triangle_with_polygon2" type="Node2D" parent="."]
+visible = false
 position = Vector2(308, 583)
 script = ExtResource("1_2e2lb")
 vertices = PackedVector2Array(0, 30, 159, 0, 316, 30, 316, 80, 159, 52, 0, 80)
 color = Color(0.886275, 0.878431, 0.384314, 1)
 
-[node name="trapezoidal_triangle_with_polygon" type="Sprite2D" parent="Control"]
-position = Vector2(875, 201)
+[node name="rectangle" type="Node2D" parent="."]
+visible = false
+position = Vector2(1258, 660)
 script = ExtResource("1_2e2lb")
-vertices = PackedVector2Array(0, 30, 158, 0, 316, 30, 316, 51, 158, 82, 0, 51)
-color = Color(0.803922, 0.858824, 0.909804, 1)
+vertices = PackedVector2Array(0, 0, 315, 0, 315, 81, 0, 81)
+color = null
