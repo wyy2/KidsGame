@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bogrhyemkxoeg"]
+
+[ext_resource type="Script" path="res://Scenes/GAMES/Build/01/Draw.gd" id="1_2e2lb"]
+[ext_resource type="Texture2D" uid="uid://cvc4x4nroihta" path="res://Assets/Backgrounds/bg_jungle_3.png" id="1_t4uv8"]
+
+[node name="BUILD" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(824, 469)
+scale = Vector2(1.1538, 1.1538)
+texture = ExtResource("1_t4uv8")
+
+[node name="Trapezoid" type="Node2D" parent="."]
+position = Vector2(809, 448)
+script = ExtResource("1_2e2lb")
+vertices = PackedVector2Array(0, 0, 159, 30, 316, 0, 316, 81, 0, 81)
+color = Color(0.176471, 0.647059, 0.494118, 1)
+
+[node name="TrapezoidPentagon" type="Node2D" parent="."]
+position = Vector2(766, 619)
+script = ExtResource("1_2e2lb")
+vertices = PackedVector2Array(0, 0, 159, 32, 316, 0, 316, 50, 159, 82, 0, 50)
+color = Color(0.85, 0.85, 0.85, 1)

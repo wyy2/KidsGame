@@ -45,6 +45,7 @@ label_settings = ExtResource("1_i2wyx")
 text_direction = 3
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 437.0
 offset_top = 380.0
 offset_right = 718.0
@@ -62,6 +63,7 @@ label_settings = ExtResource("1_i2wyx")
 text_direction = 3
 
 [node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1120.0
 offset_top = 380.0
 offset_right = 1401.0
@@ -79,6 +81,7 @@ label_settings = ExtResource("1_i2wyx")
 text_direction = 3
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 779.0
 offset_top = 380.0
 offset_right = 1060.0
@@ -96,6 +99,7 @@ label_settings = ExtResource("1_i2wyx")
 text_direction = 3
 
 [node name="ColorRect6" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1447.0
 offset_top = 380.0
 offset_right = 1728.0

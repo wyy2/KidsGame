@@ -27,6 +27,7 @@ scenes = Array[PackedScene]([ExtResource("2_h2fpu"), ExtResource("3_fdqhb"), Ext
 gameContainer = NodePath("GAME")
 
 [node name="BG" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(824, 469)
 scale = Vector2(1.1538, 1.1538)
 texture = ExtResource("5_rmmqn")
